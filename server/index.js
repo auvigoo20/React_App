@@ -7,12 +7,14 @@ import postRoutes from './routes/posts.js';
 
 const app =  express();
 
-//routes are reached by going to localhost:5000/posts/....
-app.use('/posts', postRoutes);
+
 
 app.use(bodyParser.json({ limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
+
+//routes are reached by going to localhost:5000/posts/....
+app.use('/posts', postRoutes);
 
 //mongoDB connection
 const CONNECTION_URL = 'mongodb+srv://avg:avg123@cluster0.ptx57.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
